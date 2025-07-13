@@ -21,5 +21,5 @@ for that
 - Specify which Google Calendar you want to access via 'calendar'. 
 - Use the 'print_only' setting to only query the databases, and print out what will happen without actually
 modifying the calendar.  Recommended to run set to 'true' initally before settings to 'false', which will 
-your calendar
+modify your calendar
 
