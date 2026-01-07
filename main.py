@@ -38,6 +38,7 @@ def get_wodify_classes() -> dict:
     global settings
     wodify_url = "https://api.wodify.com/v1/classes/search"
     now = datetime.datetime.now().isoformat()
+    print(now)
     today = str(datetime.date.today())
     headers = {"accept": "application/json", "x-api-key": settings["wodify_api_key"]}
     found = []
@@ -45,7 +46,7 @@ def get_wodify_classes() -> dict:
         q = {"q": f"start_date|gte|{today};program_name|in|{{'CrossFit', 'Olympic Weightlifting'}}", "sort": "start_date", "page": i}
         response = requests.get(wodify_url, headers=headers, params=q)
         r_obj = json.loads(response.text)
-        print(response.url)
+        #print(response.url)
         for c in r_obj['classes']:
             id = c['id']
             url = f"https://api.wodify.com/v1/classes/{id}"
@@ -155,7 +156,7 @@ def main():
             now = datetime.datetime.now(tz=tz)
             # get_wodify_classes gets all classes starting from today
             midnight_today = datetime.datetime(now.year, now.month, now.day, 0, 0, 0, 0, tzinfo=tz)
-            print(now.isoformat())
+            #print(now.isoformat())
             events_result = (
                 service.events()
                 .list(
